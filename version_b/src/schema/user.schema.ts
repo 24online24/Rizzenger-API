@@ -2,8 +2,8 @@ import { z } from "../deps.ts";
 
 export const createUserSchema = z.object({
   body: z.object({
-    username: z.string({
-      required_error: "Username is required",
+    name: z.string({
+      required_error: "Name is required",
     }),
     email: z.string({
       required_error: "Email is required",
@@ -28,7 +28,7 @@ export const updateUserSchema = z.object({
   ...params,
   body: z
     .object({
-      username: z.string(),
+      name: z.string(),
       email: z.string(),
       password: z.string(),
     })

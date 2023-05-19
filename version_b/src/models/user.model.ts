@@ -2,10 +2,11 @@ import { db } from "../utils/connectDB.ts";
 import { ObjectId } from "../deps.ts";
 
 export interface UserSchema {
-  id?: ObjectId;
-  username: string;
+  _id?: ObjectId;
+  name: string;
   email: string;
   password: string;
+  avatar: string;
   created_at: Date;
   online: boolean;
 }
