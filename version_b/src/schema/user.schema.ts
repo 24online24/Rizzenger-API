@@ -11,6 +11,12 @@ export const createUserSchema = z.object({
     password: z.string({
       required_error: "Password is required",
     }),
+    avatar: z.string({
+      required_error: "Avatar is required",
+    }),
+    online: z.boolean({
+      required_error: "Online is required",
+    }),
   }),
 });
 
@@ -34,3 +40,12 @@ export const updateUserSchema = z.object({
     })
     .partial(),
 });
+
+export const deleteUserSchema = z.object({
+  ...params,
+});
+
+export type CreateUserInput = z.TypeOf<typeof createUserSchema>["body"];
+export type GetUserInput = z.TypeOf<typeof getUserSchema>["params"];
+export type UpdateUserInput = z.TypeOf<typeof updateUserSchema>;
+export type DeleteUserInput = z.TypeOf<typeof deleteUserSchema>["params"];
