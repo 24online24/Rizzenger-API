@@ -1,17 +1,20 @@
 import { Application, Router } from "./deps.ts";
 import type { RouterContext } from "./deps.ts";
 import config from "./config/default.ts";
+import appRouter from "./routes/index.ts";
 
 const app = new Application();
 
 const router = new Router();
 
+// Middleware Logger
 app.use(async (ctx, next) => {
   await next();
   const rt = ctx.response.headers.get("X-Response-Time");
   console.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`);
 });
 
+// Test the API
 router.get<string>("/api/healthchecker", (ctx: RouterContext<string>) => {
   ctx.response.body = {
     status: "success",
@@ -19,6 +22,8 @@ router.get<string>("/api/healthchecker", (ctx: RouterContext<string>) => {
   };
 });
 
+// Evoke the routers here
+appRouter.init(app);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
