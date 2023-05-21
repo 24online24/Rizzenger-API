@@ -11,4 +11,4 @@ export interface UserSchema {
   online: boolean;
 }
 
-export const User = db.collection<UserSchema>("users");
+export const UserCollection = db.collection<UserSchema>("users");
