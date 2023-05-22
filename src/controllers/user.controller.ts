@@ -11,9 +11,9 @@ const createUserController = async ({
   response,
 }: RouterContext<string>) => {
   try {
-    const { name, email, password, avatar, online }: CreateUserInput =
-      await request.body()
-        .value;
+    const { name, email, password, avatar }: CreateUserInput = await request
+      .body()
+      .value;
     const userExists = await UserCollection.findOne({ name });
     if (userExists) {
       response.status = 409;
@@ -32,7 +32,6 @@ const createUserController = async ({
       password,
       created_at,
       avatar,
-      online,
     });
 
     if (!userId) {

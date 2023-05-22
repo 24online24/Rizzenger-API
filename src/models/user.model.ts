@@ -8,7 +8,7 @@ export interface UserSchema {
   password: string;
   avatar: string;
   created_at: Date;
-  online: boolean;
+  // online: boolean;
 }
 
 export const UserCollection = db.collection<UserSchema>("users");

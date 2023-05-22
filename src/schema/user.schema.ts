@@ -14,9 +14,9 @@ export const createUserSchema = z.object({
     avatar: z.string({
       required_error: "Avatar is required",
     }),
-    online: z.boolean({
-      required_error: "Online is required",
-    }),
+    // online: z.boolean({
+    //   required_error: "Online is required",
+    // }),
   }),
 });
 
@@ -37,6 +37,7 @@ export const updateUserSchema = z.object({
       name: z.string(),
       email: z.string(),
       password: z.string(),
+      avatar: z.string(),
     })
     .partial(),
 });
