@@ -5,18 +5,18 @@ import validate from "../middleware/validate.ts";
 
 const router = new Router();
 
-router.get<string>("/", userController.findAllUsersController);
 router.post<string>(
-  "/",
+  "/user",
   validate(createUserSchema),
   userController.createUserController,
 );
+router.get<string>("/users", userController.findAllUsersController);
+router.get<string>("/user/:userId", userController.findUserController);
 router.patch<string>(
-  "/:userId",
+  "/user/:userId",
   validate(updateUserSchema),
   userController.updateUserController,
 );
-router.get<string>("/:userId", userController.findUserController);
-router.delete<string>("/userId", userController.deleteUserController);
+router.delete<string>("/user/:userId", userController.deleteUserController);
 
 export default router;
