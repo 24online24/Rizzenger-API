@@ -19,4 +19,5 @@ router.patch<string>(
 );
 router.delete<string>("/user/:userId", userController.deleteUserController);
 
+console.log(router.routes());
 export default router;
