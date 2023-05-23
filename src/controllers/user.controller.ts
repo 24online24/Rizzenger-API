@@ -1,6 +1,6 @@
 import type { RouterContext } from "../deps.ts";
 import { Bson } from "../deps.ts";
-import { UserCollection } from "../models/user.model.ts";
+import { UserCollection, UserSchema } from "../models/user.model.ts";
 import type {
   CreateUserInput,
   UpdateUserInput,
@@ -141,7 +141,7 @@ const findAllUsersController = async (
     ];
 
     const cursor = UserCollection.aggregate(pipeline);
-    const cursorUsers = cursor.map((user: any) => user);
+    const cursorUsers = cursor.map((user: UserSchema) => user);
     const users = await cursorUsers;
 
     response.status = 200;
