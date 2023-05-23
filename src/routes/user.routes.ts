@@ -12,7 +12,7 @@ router.post<string>(
 );
 router.get<string>("/users", userController.findAllUsersController);
 router.get<string>("/user/:userId", userController.findUserController);
-router.patch<string>(
+router.put<string>(
   "/user/:userId",
   validate(updateUserSchema),
   userController.updateUserController,
